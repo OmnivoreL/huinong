@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huinong.Dao.HnAdminDao">
+  <resultMap id="BaseResultMap" type="com.huinong.Entity.HnAdmin">
+    <id column="hn_admin_id" jdbcType="VARCHAR" property="hnAdminId" />
+    <result column="hn_admin_pwd" jdbcType="VARCHAR" property="hnAdminPwd" />
+    <result column="hn_admin_lastlogin" jdbcType="TIMESTAMP" property="hnAdminLastlogin" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <trim suffixOverrides=",">
+        hn_admin_id,
+        hn_admin_pwd,
+        hn_admin_lastlogin
+    </trim>
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hn_admin
+    where hn_admin_id = #{hnAdminId,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from hn_admin
+  </select>
+
+</mapper>
